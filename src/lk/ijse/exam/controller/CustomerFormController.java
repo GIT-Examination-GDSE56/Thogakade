@@ -17,7 +17,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.exam.model.Customer;
 import lk.ijse.exam.view.tm.CustomerTM;
@@ -44,7 +43,6 @@ public class CustomerFormController {
     public TableColumn colName;
     public TableColumn colAddress;
     public TableColumn colSalary;
-    public ImageView btnHome;
 
     public void initialize() throws SQLException, ClassNotFoundException {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -151,8 +149,5 @@ public class CustomerFormController {
             );
         }
         tblCustomer.setItems(obList);
-    }
-
-    public void btnHomeOnAction(MouseEvent mouseEvent) {
     }
 }

@@ -8,40 +8,38 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.MotionBlur?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="515.0" prefWidth="678.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.exam.controller.CustomerFormController">
+<AnchorPane fx:id="root" prefHeight="515.0" prefWidth="678.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.exam.controller.ItemFormController">
    <children>
-      <Label layoutX="250.0" prefHeight="54.0" prefWidth="176.0" text="Customer Form">
+      <Label layoutX="250.0" prefHeight="54.0" prefWidth="218.0" text="Item Form">
          <font>
             <Font name="Courier New Bold" size="21.0" />
          </font>
       </Label>
       <Separator layoutX="189.0" layoutY="65.0" prefHeight="3.0" prefWidth="301.0" />
-      <JFXTextField fx:id="txtId" focusColor="WHITE" layoutX="178.0" layoutY="100.0" onAction="#searchCustomer" prefHeight="30.0" prefWidth="317.0" promptText="Custpomer Id" unFocusColor="BLACK">
+      <JFXTextField fx:id="txtCode" focusColor="WHITE" layoutX="178.0" layoutY="100.0" onAction="#searchItem" prefHeight="30.0" prefWidth="317.0" promptText="code" unFocusColor="BLACK">
          <font>
             <Font name="Courier New" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtName" focusColor="WHITE" layoutX="180.0" layoutY="149.0" prefHeight="30.0" prefWidth="317.0" promptText="Custpomer Name" unFocusColor="BLACK">
+      <JFXTextField fx:id="txtDesc" focusColor="WHITE" layoutX="180.0" layoutY="149.0" prefHeight="30.0" prefWidth="317.0" promptText="Description" unFocusColor="BLACK">
          <font>
             <Font name="Courier New" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtAddress" focusColor="WHITE" layoutX="178.0" layoutY="201.0" prefHeight="30.0" prefWidth="317.0" promptText="Custpomer Address" unFocusColor="BLACK">
+      <JFXTextField fx:id="txtUnitPrice" focusColor="WHITE" layoutX="178.0" layoutY="201.0" prefHeight="30.0" prefWidth="317.0" promptText="UntPrice" unFocusColor="BLACK">
          <font>
             <Font name="Courier New" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtSalary" focusColor="WHITE" layoutX="178.0" layoutY="252.0" prefHeight="30.0" prefWidth="317.0" promptText="Custpomer Salary" unFocusColor="BLACK">
+      <JFXTextField fx:id="txtQtyOnHand" focusColor="WHITE" layoutX="178.0" layoutY="252.0" prefHeight="30.0" prefWidth="317.0" promptText="QtyOnHand" unFocusColor="BLACK">
          <font>
             <Font name="Courier New" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="btnSaveCustomer" layoutX="537.0" layoutY="147.0" onAction="#SaveCustomerOnAction" prefHeight="34.0" prefWidth="92.0" style="-fx-border-color: black;" text="Save">
+      <JFXButton fx:id="btnSaveItem" layoutX="537.0" layoutY="147.0" onAction="#SaveItemOnAction" prefHeight="34.0" prefWidth="92.0" style="-fx-border-color: black;" text="Save">
          <font>
             <Font name="Courier New Bold" size="16.0" />
          </font>
@@ -67,12 +65,12 @@
             <Font name="Courier New Bold" size="16.0" />
          </font>
       </JFXButton>
-      <TableView fx:id="tblCustomer" layoutX="47.0" layoutY="293.0" prefHeight="199.0" prefWidth="579.0">
+      <TableView fx:id="tblItem" layoutX="47.0" layoutY="293.0" prefHeight="199.0" prefWidth="579.0">
         <columns>
-          <TableColumn fx:id="colId" prefWidth="167.0" text="Customer ID" />
-          <TableColumn fx:id="colName" prefWidth="174.0" text="Customer Name" />
-            <TableColumn fx:id="colAddress" prefWidth="125.0" text="Customer Address" />
-            <TableColumn fx:id="colSalary" prefWidth="112.0" text="Customer Salary" />
+          <TableColumn fx:id="colCode" prefWidth="167.0" text="Code" />
+          <TableColumn fx:id="colDesc" prefWidth="174.0" text="Desc" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="125.0" text="Unit Price" />
+            <TableColumn fx:id="colQtyOnHand" prefWidth="112.0" text="Qty OnHand" />
         </columns>
       </TableView>
    </children>

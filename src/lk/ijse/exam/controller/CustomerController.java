@@ -57,6 +57,4 @@ public class CustomerController {
         }
         return customerArray;
     }
-
-
 }
