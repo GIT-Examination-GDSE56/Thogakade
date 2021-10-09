@@ -23,4 +23,16 @@ public class CustomerController {
     }
 
 
+    public Customer searchCustomer(String id) throws SQLException, ClassNotFoundException {
+        ResultSet rst = CrudUtil.execute("SELECT * FROM Customer WHERE id=?",id);
+        if (rst.next()) {
+            return new Customer(
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3),
+                    rst.getDouble("salary")
+            );
+        }
+        return null;
+    }
 }

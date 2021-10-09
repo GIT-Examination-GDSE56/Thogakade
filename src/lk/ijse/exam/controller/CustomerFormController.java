@@ -42,6 +42,23 @@ public class CustomerFormController {
     public ImageView btnHome;
 
     public void searchCustomer(ActionEvent actionEvent) {
+        try {
+
+            Customer c1= new CustomerController().searchCustomer(txtId.getText());
+
+            if (c1!=null){
+                txtName.setText(c1.getName());
+                txtAddress.setText(c1.getAddress());
+                txtSalary.setText(String.valueOf(c1.getSalary()));
+            }else{
+                new Alert(Alert.AlertType.WARNING, "Empty Result").show();
+            }
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public void SaveCustomerOnAction(ActionEvent actionEvent) {
