@@ -36,4 +36,13 @@ public class ItemController {
         }
         return null;
     }
+
+    public boolean deleteItem(String code) throws SQLException, ClassNotFoundException {
+        return CrudUtil.execute("DELETE FROM Item WHERE code=?", code);
+    }
+
+    public boolean updateItem(Item i) throws SQLException, ClassNotFoundException {
+        return CrudUtil.execute("UPDATE Item SET description=?, unitPrice=?, qtyOnHand=? WHERE code=?", i.getDescription(),i.getUntPrice(),i.getQtyOnHand(), i.getCode());
+
+    }
 }

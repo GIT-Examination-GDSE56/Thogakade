@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import lk.ijse.exam.model.Customer;
 import lk.ijse.exam.model.Item;
 
 
@@ -77,9 +78,38 @@ public class ItemFormController {
     }
 
     public void DeleteOnAction(ActionEvent actionEvent) {
+        ItemController itemController = new ItemController();
+        try {
+            Item item = itemController.searchItem(txtCode.getText());
+            if (item!=null){
+                if (new ItemController().deleteItem(txtCode.getText()))
+                    new Alert(Alert.AlertType.CONFIRMATION, "Deleted").show();
+                else
+                    new Alert(Alert.AlertType.WARNING, "Try Again").show();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void UpdateOnAction(ActionEvent actionEvent) {
+        Item i1 = new Item(
+                txtCode.getText(), txtDesc.getText(),Double.parseDouble(txtUnitPrice.getText()),
+                Integer.parseInt(txtQtyOnHand.getText())
+        );
+        try {
+            if (new ItemController().updateItem(i1)) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Updated...").show();
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Try Again...").show();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public void getAllOnAction(ActionEvent actionEvent) {
