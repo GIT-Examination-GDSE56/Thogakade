@@ -18,10 +18,10 @@ import java.sql.SQLException;
  * @since 10/9/2021
  **/
 public class CustomerController {
+
     public boolean saveCustomer(Customer c) throws ClassNotFoundException, SQLException {
         return CrudUtil.execute("INSERT INTO Customer VALUES (?,?,?,?)",c.getId(),c.getName(),c.getAddress(),c.getSalary());
     }
-
 
     public Customer searchCustomer(String id) throws SQLException, ClassNotFoundException {
         ResultSet rst = CrudUtil.execute("SELECT * FROM Customer WHERE id=?",id);
@@ -35,4 +35,8 @@ public class CustomerController {
         }
         return null;
     }
+    public boolean deleteCustomer(String id) throws ClassNotFoundException, SQLException {
+        return CrudUtil.execute("DELETE FROM Customer WHERE id=?", id);
+    }
+
 }

@@ -83,6 +83,20 @@ public class CustomerFormController {
     }
 
     public void DeleteOnAction(ActionEvent actionEvent) {
+        CustomerController customerController = new CustomerController();
+        try {
+            Customer customer = customerController.searchCustomer(txtId.getText());
+            if (customer!=null){
+                if (new CustomerController().deleteCustomer(txtId.getText()))
+                    new Alert(Alert.AlertType.CONFIRMATION, "Deleted").show();
+                else
+                    new Alert(Alert.AlertType.WARNING, "Try Again").show();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void UpdateOnAction(ActionEvent actionEvent) {
