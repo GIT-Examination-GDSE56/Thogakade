@@ -38,7 +38,23 @@ public class ItemFormController {
     public TableColumn colQtyOnHand;
 
     public void searchItem(ActionEvent actionEvent) {
+        try {
 
+            Item i1= new ItemController().searchItem(txtCode.getText());
+
+            if (i1!=null){
+                txtDesc.setText(i1.getDescription());
+                txtUnitPrice.setText(String.valueOf(i1.getUntPrice()));
+                txtQtyOnHand.setText(String.valueOf(i1.getQtyOnHand()));
+            }else{
+                new Alert(Alert.AlertType.WARNING, "Empty Result").show();
+            }
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public void SaveItemOnAction(ActionEvent actionEvent) {
