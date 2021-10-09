@@ -13,7 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import lk.ijse.exam.model.Customer;
 import lk.ijse.exam.model.Item;
 
 
