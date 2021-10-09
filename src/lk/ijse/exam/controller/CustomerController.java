@@ -12,6 +12,7 @@ import lk.ijse.exam.utils.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * @author Ushan Shanilka <ushanshanilka80@gmail.com>
@@ -37,6 +38,10 @@ public class CustomerController {
     }
     public boolean deleteCustomer(String id) throws ClassNotFoundException, SQLException {
         return CrudUtil.execute("DELETE FROM Customer WHERE id=?", id);
+    }
+
+    public boolean updateCustomer(Customer c) throws ClassNotFoundException, SQLException {
+        return CrudUtil.execute("UPDATE Customer SET name=?, address=?, salary=? WHERE id=?", c.getName(),c.getAddress(),c.getSalary(), c.getId());
     }
 
 }

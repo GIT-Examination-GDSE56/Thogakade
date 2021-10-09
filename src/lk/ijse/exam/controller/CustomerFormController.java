@@ -9,16 +9,21 @@ package lk.ijse.exam.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.exam.model.Customer;
+import lk.ijse.exam.view.tm.CustomerTM;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * @author Ushan Shanilka <ushanshanilka80@gmail.com>
@@ -40,6 +45,15 @@ public class CustomerFormController {
     public TableColumn colAddress;
     public TableColumn colSalary;
     public ImageView btnHome;
+
+    public void initialize() throws SQLException, ClassNotFoundException {
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
+
+
+    }
 
     public void searchCustomer(ActionEvent actionEvent) {
         try {
@@ -100,9 +114,24 @@ public class CustomerFormController {
     }
 
     public void UpdateOnAction(ActionEvent actionEvent) {
+        Customer c1 = new Customer(
+                txtId.getText(), txtName.getText(), txtAddress.getText()
+                , Double.parseDouble(txtSalary.getText())
+        );
+        try {
+            if (new CustomerController().updateCustomer(c1)) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Updated...").show();
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Try Again...").show();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
-    public void getAllOnAction(ActionEvent actionEvent) {
+    public void getAllOnAction(ActionEvent actionEvent) throws ClassNotFoundException, SQLException {
     }
 
     public void btnHomeOnAction(MouseEvent mouseEvent) {
