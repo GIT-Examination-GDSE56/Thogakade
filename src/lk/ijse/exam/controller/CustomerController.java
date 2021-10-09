@@ -44,4 +44,19 @@ public class CustomerController {
         return CrudUtil.execute("UPDATE Customer SET name=?, address=?, salary=? WHERE id=?", c.getName(),c.getAddress(),c.getSalary(), c.getId());
     }
 
+    public ArrayList<Customer> getAllCustomers() throws ClassNotFoundException, SQLException {
+        ArrayList<Customer> customerArray= new ArrayList();
+        ResultSet rst = CrudUtil.execute("SELECT * FROM Customer");
+        while (rst.next()){
+            customerArray.add(
+                    new Customer(
+                            rst.getString(1),rst.getString(2),
+                            rst.getString(3),rst.getDouble("salary")
+                    )
+            );
+        }
+        return customerArray;
+    }
+
+
 }

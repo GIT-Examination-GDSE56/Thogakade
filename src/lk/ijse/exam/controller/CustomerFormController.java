@@ -52,7 +52,7 @@ public class CustomerFormController {
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
 
-
+        loadAllCustomers();
     }
 
     public void searchCustomer(ActionEvent actionEvent) {
@@ -131,7 +131,26 @@ public class CustomerFormController {
         }
     }
 
-    public void getAllOnAction(ActionEvent actionEvent) throws ClassNotFoundException, SQLException {
+    public void getAllOnAction(ActionEvent actionEvent) {
+        try {
+            loadAllCustomers();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadAllCustomers() throws SQLException, ClassNotFoundException {
+        ArrayList<Customer> list= new CustomerController().getAllCustomers();
+        ObservableList<CustomerTM> obList = FXCollections.observableArrayList();
+        for (Customer temp:list
+        ) {
+            obList.add(
+                    new CustomerTM(temp.getId(),temp.getName(),temp.getAddress(),temp.getSalary())
+            );
+        }
+        tblCustomer.setItems(obList);
     }
 
     public void btnHomeOnAction(MouseEvent mouseEvent) {
